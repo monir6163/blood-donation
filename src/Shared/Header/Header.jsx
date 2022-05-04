@@ -1,6 +1,7 @@
 import { Transition } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Logo from "../../images/logo.png";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,9 @@ const Header = () => {
     }, []);
     return (
         <nav
-            className={`list-none text-main-dark font-bold text-base shadow-md  ${
+            className={`list-none text-white bg-red-700 font-bold text-base shadow-md  ${
                 windowHeight
-                    ? "sticky top-0 w-full z-40 bg-main-dark text-main-white py-4"
+                    ? "sticky top-0 w-full z-40 bg-main-dark text-white py-4"
                     : "py-4"
             }`}
         >
@@ -25,9 +26,18 @@ const Header = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="w-full flex items-center">
                         <div className="flex-shrink-0">
-                            <NavLink to="/">
-                                {/* <img className="h-10" src={Logo} alt="Virtual Wonderss" /> */}
-                                <h1 className="text-3xl">Logo</h1>
+                            <NavLink
+                                to="/"
+                                className="flex flex-row items-center justify-center"
+                            >
+                                <img
+                                    className="h-20"
+                                    src={Logo}
+                                    alt="Donate Blood"
+                                />
+                                <span className="text-white text-lg font-bold">
+                                    Donate Blood
+                                </span>
                             </NavLink>
                         </div>
 
@@ -42,7 +52,7 @@ const Header = () => {
                                         }
                                         to="/home"
                                     >
-                                        Home
+                                        হোম
                                     </NavLink>
                                 </li>
 
@@ -55,7 +65,7 @@ const Header = () => {
                                         }
                                         to="/about"
                                     >
-                                        About Us
+                                        রক্তের আবেদন তালিকা
                                     </NavLink>
                                 </li>
 
@@ -68,7 +78,7 @@ const Header = () => {
                                         }
                                         to="/pricing"
                                     >
-                                        Pricing
+                                        রক্ত দাতাদের তালিকা
                                     </NavLink>
                                 </li>
 
@@ -81,7 +91,7 @@ const Header = () => {
                                         }
                                         to="/contact"
                                     >
-                                        Contact Us
+                                        রক্তের জন্য আবেদন করুন
                                     </NavLink>
                                 </li>
 
@@ -91,7 +101,7 @@ const Header = () => {
                                             type="button"
                                             className="primary-btn"
                                         >
-                                            Get Quotes
+                                            লগইন করুন
                                         </button>
                                     </NavLink>
                                 </li>
@@ -170,7 +180,7 @@ const Header = () => {
                                     }
                                     to="/home"
                                 >
-                                    Home
+                                    হোম
                                 </NavLink>
                             </li>
                             <li className=" px-3 py-2 mx-2">
@@ -182,7 +192,7 @@ const Header = () => {
                                     }
                                     to="/about"
                                 >
-                                    About Us
+                                    রক্তের আবেদন তালিকা
                                 </NavLink>
                             </li>
 
@@ -195,7 +205,7 @@ const Header = () => {
                                     }
                                     to="/pricing"
                                 >
-                                    Pricing
+                                    রক্ত দাতাদের তালিকা
                                 </NavLink>
                             </li>
                             <li className=" px-3 py-2 mx-2">
@@ -207,7 +217,7 @@ const Header = () => {
                                     }
                                     to="/contact"
                                 >
-                                    Contact Us
+                                    রক্তের জন্য আবেদন করুন
                                 </NavLink>
                             </li>
 
@@ -217,7 +227,7 @@ const Header = () => {
                                         type="button"
                                         className="primary-btn"
                                     >
-                                        Get Quotes
+                                        লগইন করুন
                                     </button>
                                 </NavLink>
                             </li>

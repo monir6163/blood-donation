@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/logo.png';
 
@@ -17,7 +17,7 @@ function Header() {
   return (
     <nav
       className={`list-none text-white bg-red-700 font-bold text-base shadow-md  ${
-        windowHeight ? 'sticky top-0 w-full z-40 bg-main-dark text-white py-4' : 'py-4'
+        windowHeight ? 'sticky top-0 w-full z-40 bg-main-dark text-white py-2' : 'py-2'
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -80,7 +80,7 @@ function Header() {
                 </li>
 
                 <li>
-                  <NavLink to="/get-quoter">
+                  <NavLink to="/register">
                     <button type="button" className="primary-btn">
                       লগইন করুন
                     </button>

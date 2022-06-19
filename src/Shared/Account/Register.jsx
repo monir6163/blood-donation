@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -10,38 +11,42 @@ const Register = () => {
   const [union, setUnion] = useState([]);
   const [unionName, setUnionName] = useState([]);
   useEffect(() => {
-    const url = '/divisions.json';
-    fetch(url)
-      .then((response) => response.json())
+    axios('http://localhost:5000/division/all')
       .then((data) => {
-        setDivision(data);
+        setDivision(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
   useEffect(() => {
-    const url = '/districts.json';
-    fetch(url)
-      .then((response) => response.json())
+    axios('http://localhost:5000/district/all')
       .then((data) => {
-        setDistrict(data);
+        setDistrict(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
   useEffect(() => {
-    const url = '/upazilas.json';
-    fetch(url)
-      .then((response) => response.json())
+    axios('http://localhost:5000/upazila/all')
       .then((data) => {
-        setUpzilla(data);
+        setUpzilla(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
   useEffect(() => {
-    const url = '/unions.json';
-    fetch(url)
-      .then((response) => response.json())
+    axios('http://localhost:5000/union/all')
       .then((data) => {
-        setUnion(data);
+        setUnion(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
   const handledivision = (e) => {
@@ -70,7 +75,7 @@ const Register = () => {
         <form className="w-full p-6 mx-auto" action="">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-3">
+              <label className="text-sm tracking-wide mb-3">
                 নাম <span className="text-red-600">*</span>
               </label>
               <input
@@ -80,7 +85,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-2">
+              <label className="text-sm tracking-wide mb-2">
                 বয়স <span className="text-red-600">*</span>
               </label>
               <input
@@ -92,7 +97,7 @@ const Register = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-6">
+              <label className="text-sm tracking-wide mb-6">
                 রক্তের গ্রুপ <span className="text-red-600">*</span>
               </label>
               <select name="" id="" className="w-full py-2 border rounded-lg focus:outline-none">
@@ -108,7 +113,7 @@ const Register = () => {
               </select>
             </div>
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-2">
+              <label className="text-sm tracking-wide mb-2">
                 বয়স <span className="text-red-600">*</span>
               </label>
               <input
@@ -120,7 +125,7 @@ const Register = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-6">
+              <label className="text-sm tracking-wide mb-6">
                 নম্বর <span className="text-red-600">*</span>
               </label>
               <input
@@ -130,7 +135,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-2">
+              <label className="text-sm tracking-wide mb-2">
                 বিভাগ <span className="text-red-600">*</span>{' '}
               </label>
               <select
@@ -149,7 +154,7 @@ const Register = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-2">
+              <label className="text-sm tracking-wide mb-2">
                 জেলা <span className="text-red-600">*</span>{' '}
               </label>
               <select
@@ -166,7 +171,7 @@ const Register = () => {
               </select>
             </div>
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-2">
+              <label className="text-sm tracking-wide mb-2">
                 উপজেলা <span className="text-red-600">*</span>{' '}
               </label>
               <select
@@ -185,7 +190,7 @@ const Register = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
             <div>
-              <label className="text-sm font-semibold tracking-wide mb-2">
+              <label className="text-sm tracking-wide mb-2">
                 ইউনিয়ন <span className="text-red-600">*</span>{' '}
               </label>
               <select name="" id="" className="w-full py-2 border rounded-lg focus:outline-none">
@@ -202,8 +207,8 @@ const Register = () => {
           <div className="text-center">
             <input
               type="button"
-              value="SUBMIT"
-              className="text-sm font-semibold bg-pink-600 py-2 px-3 rounded-md text-white hover:bg-indigo-600 mb-4"
+              value="নিবন্ধন করুন"
+              className="text-sm bg-pink-600 py-2 px-3 rounded-md text-white hover:bg-indigo-600 mb-4"
             />
           </div>
         </form>

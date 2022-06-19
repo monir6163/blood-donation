@@ -1,35 +1,33 @@
+@import url('https://fonts.maateen.me/solaiman-lipi/font.css');
+body {
+  font-family: 'SolaimanLipi', Arial, sans-serif !important;
+}
+
 .primary-btn {
-    background: linear-gradient(
-            306.64deg,
-            rgba(247, 182, 20, 1),
-            rgba(8, 136, 192, 0.3)
-        ),
-        #ff9a3d !important;
-    box-shadow: 0px 22.4066px 30.3008px rgba(27, 27, 27, 0.25),
-        inset 0px 0px 8.7406px rgba(255, 255, 255, 0.52);
-    border-radius: 50px;
-    color: #fff;
-    @apply px-6 py-2.5 sm:px-8 sm:py-3.5 font-semibold text-base transition-all;
+  background: linear-gradient(306.64deg, rgba(247, 182, 20, 1), rgba(8, 136, 192, 0.3)), #ff9a3d !important;
+  box-shadow: 0px 22.4066px 30.3008px rgba(27, 27, 27, 0.25),
+    inset 0px 0px 8.7406px rgba(255, 255, 255, 0.52);
+  border-radius: 50px;
+  color: #fff;
+  @apply px-6 py-2.5 sm:px-8 sm:py-3.5 font-semibold text-base transition-all;
 }
 
 .primary-btn:hover {
-    background: linear-gradient(
-            306.64deg,
-            rgba(247, 122, 28, 0.65) 27.07% rgba(255, 41, 105, 0.65) 71.29%
-        ),
-        #ff9a3d !important;
+  background: linear-gradient(
+      306.64deg,
+      rgba(247, 122, 28, 0.65) 27.07% rgba(255, 41, 105, 0.65) 71.29%
+    ),
+    #ff9a3d !important;
 }
 
 .secondary-btn {
-    background: linear-gradient(358.21deg, #0a0411 -29.72%, #3e250e 117.71%),
-        #17101f !important;
-    box-shadow: 0px 38.4526px 52px rgba(27, 27, 27, 0.25),
-        inset 0px 0px 15px rgba(255, 255, 255, 0.52);
-    border-radius: 90px;
-    @apply px-3 py-2 sm:px-6 sm:py-3 font-semibold text-sm sm:text-xl transition-all;
+  background: linear-gradient(358.21deg, #0a0411 -29.72%, #3e250e 117.71%), #17101f !important;
+  box-shadow: 0px 38.4526px 52px rgba(27, 27, 27, 0.25),
+    inset 0px 0px 15px rgba(255, 255, 255, 0.52);
+  border-radius: 90px;
+  @apply px-3 py-2 sm:px-6 sm:py-3 font-semibold text-sm sm:text-xl transition-all;
 }
 
 .secondary-btn:hover {
-    background: linear-gradient(358.21deg, #3e250e -29.72%, #0a0411 117.71%),
-        #17101f !important;
+  background: linear-gradient(358.21deg, #3e250e -29.72%, #0a0411 117.71%), #17101f !important;
 }

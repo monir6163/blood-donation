@@ -1,0 +1,9 @@
+const RequestBloodList = () => {
+  return (
+    <>
+      <h1>hello</h1>
+    </>
+  );
+};
+
+export default RequestBloodList;

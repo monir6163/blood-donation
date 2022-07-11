@@ -336,7 +336,7 @@ const Register = () => {
             <div>
               <label className="text-sm tracking-wide mb-2">
                 ছবি আপলোড করুন <span className="text-red-600">*</span>{' '}
-                <small>অবশ্যই ৩ এমবি হতে হবে </small>
+                <small>সর্বোচ্চ ৩ এমবি হতে হবে </small>
               </label>
               <input
                 className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

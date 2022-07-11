@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useAllbloodRequest from '../../Hooks/useAllbloodRequest';
 import Top from '../../Shared/Top';
 import BloodCard from './BloodCard';
@@ -19,9 +19,11 @@ const RequestBloodList = () => {
   const gotoNext = () => {
     setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
   };
+  const [value, setValue] = useState('');
   const handleSearchField = (e) => {
     e.preventDefault();
     const searchValue = e.target.value;
+    setValue(searchValue);
     if (searchValue !== '') {
       const filterUser = bloodRequest.filter((group) => group.bloodGroup === searchValue);
       setDisplayUser(filterUser);
@@ -60,7 +62,7 @@ const RequestBloodList = () => {
           {displayuser?.length === 0 ? (
             <div className="flex justify-center items-center">
               <div className="text-center font-semibold text-red-700">
-                <h1>Blood Not Found Here....</h1>
+                <h1 className="text-center py-20">( {value} ) রক্ত পাওয়া যায়নি....</h1>
               </div>
             </div>
           ) : (

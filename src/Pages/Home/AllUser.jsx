@@ -30,9 +30,11 @@ const AllUser = () => {
         console.log(err);
       });
   }, []);
+  const [value, setValue] = useState('');
   const handleSearchField = (e) => {
     e.preventDefault();
     const searchValue = e.target.value;
+    setValue(searchValue);
     if (searchValue !== '') {
       const filterUser = user.filter(
         (group) => group.bloodGroup === searchValue || group.districtId.bn_name === searchValue
@@ -93,7 +95,7 @@ const AllUser = () => {
           {displayuser?.length === 0 ? (
             <div className="flex justify-center items-center">
               <div className="text-center font-semibold text-red-700">
-                <h1>Blood Not Found Here....</h1>
+                <h1 className="text-center py-20">( {value} ) রক্ত পাওয়া যায়নি....</h1>
               </div>
             </div>
           ) : (

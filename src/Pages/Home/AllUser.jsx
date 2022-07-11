@@ -69,7 +69,7 @@ const AllUser = () => {
               name=""
               id=""
               className="w-full py-2 focus:outline-none border border-rose-500 rounded">
-              <option value="">ঠিকানা অনুসারে খুঁজুন</option>
+              <option value="">জেলা অনুসারে খুঁজুন</option>
               {address?.map((districts) => {
                 return (
                   <option key={districts._id} value={districts?.bn_name}>

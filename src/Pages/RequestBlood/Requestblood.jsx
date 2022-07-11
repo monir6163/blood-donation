@@ -1,15 +1,22 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CirclesWithBar } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../Hooks/useAuth';
+import Top from '../../Shared/Top';
 
 const Requestblood = () => {
+  useEffect(() => {
+    document.title =
+      'রক্তের জন্য অনুরোধ পাঠান : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
+  }, []);
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   const [error, setError] = useState({});
+  const regex = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
+
   const RequestbloodForm = async (e) => {
     e.preventDefault();
     setData({});
@@ -38,6 +45,22 @@ const Requestblood = () => {
     }
     if (
       data.name &&
+      data.number &&
+      data.hospitalName &&
+      data.address &&
+      data.bloodGroup &&
+      data.bloodDate &&
+      data.details &&
+      data.donarCost
+    ) {
+      if (!regex.test(data.number)) {
+        return setError({
+          number: 'Only Valid Number Allow'
+        });
+      }
+    }
+    if (
+      data.name &&
       !data.number &&
       !data.hospitalName &&
       !data.address &&
@@ -169,6 +192,7 @@ const Requestblood = () => {
         donarCost: 'Donar cost is required'
       });
     }
+
     const finalData = {};
     if (data.name) finalData.name = data.name;
     if (data.number) finalData.number = data.number;
@@ -200,9 +224,17 @@ const Requestblood = () => {
       }
     }
   };
+  const disablePastDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + '-' + mm + '-' + dd;
+  };
   return (
     <>
-      <div className="max-w-4xl md:mx-auto mx-2 bg-white shadow-2xl border rounded-lg h-auto mt-10 md:mt-16">
+      <Top />
+      <div className="max-w-4xl md:mx-auto mx-2 bg-white shadow-2xl border rounded-lg h-auto mt-8 mb-8">
         <div className="grid grid-cols-1 gap-4 items-center">
           <div className="p-3">
             <div className="text-center md:mt-0 lg:mt-0 mt-8">
@@ -312,6 +344,7 @@ const Requestblood = () => {
                       type="date"
                       placeholder="দিন-মাস-বছর"
                       id="bloodDate"
+                      min={disablePastDate()}
                       onChange={(e) => {
                         setError((prevState) => ({ ...prevState, bloodDate: '' }));
                         setData((prevState) => ({ ...prevState, bloodDate: e.target.value }));

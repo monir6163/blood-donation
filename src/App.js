@@ -35,6 +35,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/requestbloodlist" element={<RequestBloodList />} />
           <Route
             path="/requestBlood"

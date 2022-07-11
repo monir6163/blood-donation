@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useAlluser from '../../Hooks/useAlluser';
+import Top from '../../Shared/Top';
 import Card from './Card';
 
 const AllUser = () => {
+  useEffect(() => {
+    document.title =
+      'রক্ত দাতাদের তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
+  }, []);
   const [user, pageNumber, numberOfPages, setPageNumber, displayuser, setDisplayUser] =
     useAlluser();
 
@@ -44,6 +49,7 @@ const AllUser = () => {
 
   return (
     <>
+      <Top />
       <section className="container mx-auto px-4 pt-10">
         <div className="grid gap-4 md:grid-cols-2">
           <div>

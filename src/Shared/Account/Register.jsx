@@ -8,8 +8,13 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 } from 'uuid';
 import useAuth from '../../Hooks/useAuth';
+import Top from '../Top';
 import { storage } from './firebase';
 const Register = () => {
+  useEffect(() => {
+    document.title =
+      'রক্ত দিতে / রক্ত নিতে ইচ্ছুক : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
+  }, []);
   const [division, setDivision] = useState([]);
   const [divisionId, setDivisionID] = useState();
   const [district, setDistrict] = useState([]);
@@ -273,259 +278,262 @@ const Register = () => {
   }
 
   return (
-    <div className="max-w-4xl md:mx-auto mx-2 bg-white shadow-2xl border rounded-lg h-auto py-5 mt-10">
-      <div className="text-center">
-        <div
-          onClick={() => history('/')}
-          className="top-2 left-0 btn px-4 animate-bounce z-10 cursor-pointer">
-          <GrClose size="1.5em" />
+    <>
+      <Top />
+      <div className="max-w-4xl md:mx-auto mx-2 bg-white shadow-2xl border rounded-lg h-auto py-5 mt-8 mb-8">
+        <div className="text-center">
+          <div
+            onClick={() => history('/')}
+            className="top-2 left-0 btn px-4 animate-bounce z-10 cursor-pointer">
+            <GrClose size="1.5em" />
+          </div>
+          <h1 className="text-lg font-semibold tracking-wide mb-2 text-red-500">নিবন্ধন করুন</h1>
+          <h6 className="text-xs font-light">রক্তদানে স্বাগতম।</h6>
         </div>
-        <h1 className="text-lg font-semibold tracking-wide mb-2 text-red-500">নিবন্ধন করুন</h1>
-        <h6 className="text-xs font-light">রক্তদানে স্বাগতম।</h6>
-      </div>
-      <div className="mx-2 pt-5 md:mx-2">
-        <form className="w-full p-6 mx-auto" onSubmit={handlesubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div>
-              <label className="text-sm tracking-wide mb-3">
-                নাম <span className="text-red-600">*</span>
-              </label>
-              <input
-                className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                placeholder="নাম"
-              />
-              <p className="text-red-600">{Nameerror}</p>
-            </div>
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                বয়স <span className="text-red-600">*</span>
-              </label>
-              <input
-                className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                onChange={(e) => setAge(e.target.value)}
-                placeholder="বয়স"
-              />
-              <p className="text-red-600">{Ageerror}</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
-            <div>
-              <label className="text-sm tracking-wide mb-6">
-                রক্তের গ্রুপ <span className="text-red-600">*</span>
-              </label>
-              <select
-                name=""
-                id=""
-                className="w-full py-2 border rounded-lg focus:outline-none"
-                onChange={(e) => setBloodGroup(e.target.value)}>
-                <option value="">রক্তের গ্রুপ</option>
-                <option value="এ+">এ+</option>
-                <option value="এ-">এ-</option>
-                <option value="বি+">বি+</option>
-                <option value="বি-">বি-</option>
-                <option value="এবি+">এবি+</option>
-                <option value="এবি-">এবি-</option>
-                <option value="ও+">ও+</option>
-                <option value="ও-">ও-</option>
-              </select>
-              <p className="text-red-600">{blood}</p>
-            </div>
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                ছবি আপলোড করুন <span className="text-red-600">*</span>{' '}
-                <small>সর্বোচ্চ ৩ এমবি হতে হবে </small>
-              </label>
-              <input
-                className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="file"
-                onChange={handleimage}
-                title="ছবি আপলোড করুন"
-              />
-
-              <p className="text-red-600">{img}</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
-            <div>
-              <label className="text-sm tracking-wide mb-6">
-                আগে রক্ত কতবার দিয়েছেন <span className="text-red-600">*</span>
-              </label>
-              <select
-                name=""
-                id=""
-                className="w-full py-2 border rounded-lg focus:outline-none"
-                onChange={(e) => setDonarTimes(e.target.value)}>
-                <option value="০">০(বার)</option>
-                <option value="১">১(বার)</option>
-                <option value="২">২(বার)</option>
-                <option value="৩">৩(বার)</option>
-                <option value="৪">৪(বার)</option>
-                <option value="৫">৫(বার)</option>
-                <option value="৬">৬(বার)</option>
-                <option value="৭">৭(বার)</option>
-                <option value="৮">৮(বার)</option>
-                <option value="৯">৯(বার)</option>
-                <option value="১০">১০(বার)</option>
-              </select>
-              <p className="text-red-600">{blood}</p>
-            </div>
-            <div className="pt-3">
-              <label htmlFor="yes" className="text-sm tracking-wide mb-2">
-                আপনি রক্ত নিবেন ? <span className="text-red-600">*</span>{' '}
-                <input
-                  onChange={(e) => setDonar(e.target.value)}
-                  type="radio"
-                  id="yes"
-                  name="donar"
-                  value="2"
-                />{' '}
-                হ্যাঁ
-              </label>
+        <div className="mx-2 pt-5 md:mx-2">
+          <form className="w-full p-6 mx-auto" onSubmit={handlesubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label htmlFor="no" className="text-sm tracking-wide mb-2">
-                  আপনি রক্ত দিবেন ? <span className="text-red-600">*</span>{' '}
+                <label className="text-sm tracking-wide mb-3">
+                  নাম <span className="text-red-600">*</span>
+                </label>
+                <input
+                  className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="নাম"
+                />
+                <p className="text-red-600">{Nameerror}</p>
+              </div>
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  বয়স <span className="text-red-600">*</span>
+                </label>
+                <input
+                  className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  onChange={(e) => setAge(e.target.value)}
+                  placeholder="বয়স"
+                />
+                <p className="text-red-600">{Ageerror}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
+              <div>
+                <label className="text-sm tracking-wide mb-6">
+                  রক্তের গ্রুপ <span className="text-red-600">*</span>
+                </label>
+                <select
+                  name=""
+                  id=""
+                  className="w-full py-2 border rounded-lg focus:outline-none"
+                  onChange={(e) => setBloodGroup(e.target.value)}>
+                  <option value="">রক্তের গ্রুপ</option>
+                  <option value="এ+">এ+</option>
+                  <option value="এ-">এ-</option>
+                  <option value="বি+">বি+</option>
+                  <option value="বি-">বি-</option>
+                  <option value="এবি+">এবি+</option>
+                  <option value="এবি-">এবি-</option>
+                  <option value="ও+">ও+</option>
+                  <option value="ও-">ও-</option>
+                </select>
+                <p className="text-red-600">{blood}</p>
+              </div>
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  ছবি আপলোড করুন <span className="text-red-600">*</span>{' '}
+                  <small>সর্বোচ্চ ৩ এমবি হতে হবে </small>
+                </label>
+                <input
+                  className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="file"
+                  onChange={handleimage}
+                  title="ছবি আপলোড করুন"
+                />
+
+                <p className="text-red-600">{img}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
+              <div>
+                <label className="text-sm tracking-wide mb-6">
+                  আগে রক্ত কতবার দিয়েছেন <span className="text-red-600">*</span>
+                </label>
+                <select
+                  name=""
+                  id=""
+                  className="w-full py-2 border rounded-lg focus:outline-none"
+                  onChange={(e) => setDonarTimes(e.target.value)}>
+                  <option value="০">০(বার)</option>
+                  <option value="১">১(বার)</option>
+                  <option value="২">২(বার)</option>
+                  <option value="৩">৩(বার)</option>
+                  <option value="৪">৪(বার)</option>
+                  <option value="৫">৫(বার)</option>
+                  <option value="৬">৬(বার)</option>
+                  <option value="৭">৭(বার)</option>
+                  <option value="৮">৮(বার)</option>
+                  <option value="৯">৯(বার)</option>
+                  <option value="১০">১০(বার)</option>
+                </select>
+                <p className="text-red-600">{blood}</p>
+              </div>
+              <div className="pt-3">
+                <label htmlFor="yes" className="text-sm tracking-wide mb-2">
+                  আপনি রক্ত নিবেন ? <span className="text-red-600">*</span>{' '}
                   <input
                     onChange={(e) => setDonar(e.target.value)}
                     type="radio"
-                    id="no"
+                    id="yes"
                     name="donar"
-                    value="1"
+                    value="2"
                   />{' '}
                   হ্যাঁ
                 </label>
+                <div>
+                  <label htmlFor="no" className="text-sm tracking-wide mb-2">
+                    আপনি রক্ত দিবেন ? <span className="text-red-600">*</span>{' '}
+                    <input
+                      onChange={(e) => setDonar(e.target.value)}
+                      type="radio"
+                      id="no"
+                      name="donar"
+                      value="1"
+                    />{' '}
+                    হ্যাঁ
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
-            <div>
-              <label className="text-sm tracking-wide mb-6">
-                নাম্বার <span className="text-red-600">*</span>
-              </label>
-              <input
-                className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                onChange={(e) => setNumber(e.target.value)}
-                placeholder="নাম্বার"
-              />
-              <p className="text-red-600">{numberError}</p>
-            </div>
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                বিভাগ <span className="text-red-600">*</span>{' '}
-              </label>
-              <select
-                name=""
-                id=""
-                className="w-full py-2 border rounded-lg focus:outline-none"
-                onChange={(e) => handledivision(e)}>
-                <option hidden>বিভাগ বাছাই করুন</option>
-                {division?.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.bn_name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-red-600">{divId}</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                জেলা <span className="text-red-600">*</span>{' '}
-              </label>
-              <select
-                name=""
-                id=""
-                className="w-full py-2 border rounded-lg focus:outline-none"
-                onChange={(e) => handledistrict(e)}>
-                <option hidden>জেলা বাছাই করুন</option>
-                {dristicName?.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.bn_name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-red-600">{disId}</p>
-            </div>
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                উপজেলা <span className="text-red-600">*</span>{' '}
-              </label>
-              <select
-                name=""
-                id=""
-                className="w-full py-2 border rounded-lg focus:outline-none"
-                onChange={(e) => handleunion(e)}>
-                <option hidden>উপজেলা বাছাই করুন</option>
-                {upzillaName?.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.bn_name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-red-600">{upoId}</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                ইউনিয়ন <span className="text-red-600">*</span>{' '}
-              </label>
-              <select
-                name=""
-                id=""
-                className="w-full py-2 border rounded-lg focus:outline-none"
-                onChange={handleunionId}>
-                <option hidden>ইউনিয়ন বাছাই করুন</option>
-                {unionName?.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.bn_name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-red-600">{uniId}</p>
-            </div>
-            <div>
-              <label className="text-sm tracking-wide mb-2">
-                পাসওয়ার্ড <span className="text-red-600">*</span>{' '}
-              </label>
-              <input
-                className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="password"
-                placeholder="পাসওয়ার্ড"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <p className="text-red-600">{passwordError}</p>
-            </div>
-          </div>
-          <br />
-          <div className="text-center">
-            {isLoading ? (
-              <div className="text-center w-9 mx-auto">
-                <CirclesWithBar width="50px" color="red" outerCircleColor="green" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
+              <div>
+                <label className="text-sm tracking-wide mb-6">
+                  নাম্বার <span className="text-red-600">*</span>
+                </label>
+                <input
+                  className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  onChange={(e) => setNumber(e.target.value)}
+                  placeholder="নাম্বার"
+                />
+                <p className="text-red-600">{numberError}</p>
               </div>
-            ) : (
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                নিবন্ধন করুন
-              </button>
-            )}
-          </div>
-        </form>
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  বিভাগ <span className="text-red-600">*</span>{' '}
+                </label>
+                <select
+                  name=""
+                  id=""
+                  className="w-full py-2 border rounded-lg focus:outline-none"
+                  onChange={(e) => handledivision(e)}>
+                  <option hidden>বিভাগ বাছাই করুন</option>
+                  {division?.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.bn_name}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-red-600">{divId}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  জেলা <span className="text-red-600">*</span>{' '}
+                </label>
+                <select
+                  name=""
+                  id=""
+                  className="w-full py-2 border rounded-lg focus:outline-none"
+                  onChange={(e) => handledistrict(e)}>
+                  <option hidden>জেলা বাছাই করুন</option>
+                  {dristicName?.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.bn_name}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-red-600">{disId}</p>
+              </div>
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  উপজেলা <span className="text-red-600">*</span>{' '}
+                </label>
+                <select
+                  name=""
+                  id=""
+                  className="w-full py-2 border rounded-lg focus:outline-none"
+                  onChange={(e) => handleunion(e)}>
+                  <option hidden>উপজেলা বাছাই করুন</option>
+                  {upzillaName?.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.bn_name}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-red-600">{upoId}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  ইউনিয়ন <span className="text-red-600">*</span>{' '}
+                </label>
+                <select
+                  name=""
+                  id=""
+                  className="w-full py-2 border rounded-lg focus:outline-none"
+                  onChange={handleunionId}>
+                  <option hidden>ইউনিয়ন বাছাই করুন</option>
+                  {unionName?.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.bn_name}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-red-600">{uniId}</p>
+              </div>
+              <div>
+                <label className="text-sm tracking-wide mb-2">
+                  পাসওয়ার্ড <span className="text-red-600">*</span>{' '}
+                </label>
+                <input
+                  className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="password"
+                  placeholder="পাসওয়ার্ড"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <p className="text-red-600">{passwordError}</p>
+              </div>
+            </div>
+            <br />
+            <div className="text-center">
+              {isLoading ? (
+                <div className="text-center w-9 mx-auto">
+                  <CirclesWithBar width="50px" color="red" outerCircleColor="green" />
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  নিবন্ধন করুন
+                </button>
+              )}
+            </div>
+          </form>
 
-        <br />
-        <h1 className="text-center">
-          আপনার একটি একাউন্ট আছে{' '}
-          <NavLink to="/login" className="text-sm font-medium text-indigo-600">
-            লগইন করুন
-          </NavLink>
-        </h1>
+          <br />
+          <h1 className="text-center">
+            আপনার একটি একাউন্ট আছে{' '}
+            <NavLink to="/login" className="text-sm font-medium text-indigo-600">
+              লগইন করুন
+            </NavLink>
+          </h1>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

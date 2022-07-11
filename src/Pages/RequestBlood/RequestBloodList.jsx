@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import useAllbloodRequest from '../../Hooks/useAllbloodRequest';
+import Top from '../../Shared/Top';
 import BloodCard from './BloodCard';
 
 const RequestBloodList = () => {
+  useEffect(() => {
+    document.title =
+      'রক্তের আবেদন তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
+  }, []);
   const [bloodRequest, pageNumber, numberOfPages, setPageNumber, displayuser, setDisplayUser] =
     useAllbloodRequest();
 
@@ -26,6 +32,7 @@ const RequestBloodList = () => {
   };
   return (
     <>
+      <Top />
       <section className="container mx-auto px-4 pt-10">
         <div className="grid gap-4 md:grid-cols-1 ">
           <div className="md:px-80">

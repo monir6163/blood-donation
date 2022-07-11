@@ -18,7 +18,9 @@ const Card = (props) => {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-2xl border-rose-500 border text-center transform duration-500 hover:translate-y-1">
       <div className="text-center p-2">
-        <div className="top-2 px-4 animate-bounce z-10 text-xl font-semibold">{bloodGroup}</div>
+        <div className="top-2 px-4 animate-bounce text-red-600 z-10 text-xl font-semibold">
+          {bloodGroup}
+        </div>
         <div className="w-28 h-28 rounded-full mx-auto">
           <RenderSmoothImage src={imageUrl} alt={name} />
         </div>

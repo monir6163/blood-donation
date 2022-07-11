@@ -20,7 +20,9 @@ const BloodCard = (props) => {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-2xl border-rose-500 border text-center transform duration-500 hover:translate-y-1">
       <div className="text-center p-2">
-        <div className="top-2 px-4 animate-bounce z-10 text-xl font-semibold">{bloodGroup}</div>
+        <div className="top-2 px-4 animate-bounce text-red-600 z-10 text-xl font-semibold">
+          {bloodGroup}
+        </div>
         <div className="w-28 h-28 rounded-full mx-auto">
           <RenderSmoothImage src={userId?.imageUrl} alt={name} />
         </div>
@@ -51,7 +53,7 @@ const BloodCard = (props) => {
         <a href={`tel:${number}`}>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            className="bg-blue-500 hover:bg-blue-400 text-white font-normal py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
             কল করুন
           </button>
         </a>

@@ -274,6 +274,34 @@ function Header() {
                   হোম
                 </NavLink>
               </li>
+              {user?.donar === '2' ? (
+                <li className=" px-3 py-2 mx-2">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'text-main-yellow border-b-2 border-main-yellow'
+                        : 'transition duration-150 hover:text-main-yellow'
+                    }
+                    to="/requestBlood">
+                    রক্তের জন্য অনুরোধ পাঠান
+                  </NavLink>
+                </li>
+              ) : !user ? (
+                <li className=" px-3 py-2 mx-2">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'text-main-yellow border-b-2 border-main-yellow'
+                        : 'transition duration-150 hover:text-main-yellow'
+                    }
+                    to="/requestBlood">
+                    রক্তের জন্য অনুরোধ পাঠান
+                  </NavLink>
+                </li>
+              ) : (
+                ''
+              )}
+
               <li className=" px-3 py-2 mx-2">
                 <NavLink
                   className={({ isActive }) =>
@@ -281,7 +309,7 @@ function Header() {
                       ? 'text-main-yellow border-b-2 border-main-yellow'
                       : 'transition duration-150 hover:text-main-yellow'
                   }
-                  to="/about">
+                  to="/requestbloodlist">
                   রক্তের আবেদন তালিকা
                 </NavLink>
               </li>
@@ -293,19 +321,8 @@ function Header() {
                       ? 'text-main-yellow border-b-2 border-main-yellow'
                       : 'transition duration-150 hover:text-main-yellow'
                   }
-                  to="/pricing">
+                  to="/alldonar">
                   রক্ত দাতাদের তালিকা
-                </NavLink>
-              </li>
-              <li className=" px-3 py-2 mx-2">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? 'text-main-yellow border-b-2 border-main-yellow'
-                      : 'transition duration-150 hover:text-main-yellow'
-                  }
-                  to="/contact">
-                  রক্তের জন্য আবেদন করুন
                 </NavLink>
               </li>
 
@@ -313,7 +330,7 @@ function Header() {
                 <li>
                   <NavLink to="/login">
                     <button type="button" className="primary-btn">
-                      লগইন করুন
+                      রক্ত দিতে / রক্ত নিতে ইচ্ছুক
                     </button>
                   </NavLink>
                 </li>

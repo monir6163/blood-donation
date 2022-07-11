@@ -28,7 +28,7 @@ const RequestBloodList = () => {
     <>
       <section className="container mx-auto px-4 pt-10">
         <div className="grid gap-4 md:grid-cols-1 ">
-          <div className="px-80">
+          <div className="md:px-80">
             <select
               name=""
               id=""

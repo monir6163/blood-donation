@@ -13,7 +13,9 @@ import Requestblood from './Pages/RequestBlood/Requestblood';
 import RequestBloodList from './Pages/RequestBlood/RequestBloodList';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Login from './Shared/Account/Login';
+import Profile from './Shared/Account/Profile';
 import Register from './Shared/Account/Register';
+import Setting from './Shared/Account/Setting';
 import Footer from './Shared/Footer/Footer';
 import Header from './Shared/Header/Header';
 function App() {
@@ -51,6 +53,22 @@ function App() {
           <Route path="/alldonar" element={<AllUser />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/setting"
+            element={
+              <PrivateRoute>
+                <Setting />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
         <Footer />

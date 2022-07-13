@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import RenderSmoothImage from 'render-smooth-image-react';
+import 'render-smooth-image-react/build/style.css';
 import useAuth from '../../Hooks/useAuth';
 import Logo from '../../images/logo.png';
 
@@ -36,10 +38,10 @@ function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="w-full flex items-center">
             <div className="flex-shrink-0">
-              <NavLink to="/" className="flex flex-row items-center justify-center">
+              <a href="/" className="flex flex-row items-center justify-center">
                 <img className="h-20" src={Logo} alt="Donate Blood" />
                 <span className="text-white text-lg font-bold">Donate Blood</span>
-              </NavLink>
+              </a>
             </div>
 
             <div className="ml-auto hidden lg:block">
@@ -125,12 +127,9 @@ function Header() {
                         aria-expanded="true"
                         aria-haspopup="true">
                         <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2 animate-bounce">
-                          <img
-                            title="Profile"
-                            className="h-8 w-8 rounded-full"
-                            src={user?.imageUrl}
-                            alt={user?.name}
-                          />
+                          <div className="w-8 h-8 rounded-full mx-auto profile">
+                            <RenderSmoothImage src={user?.imageUrl} alt={user?.name} />
+                          </div>
                         </div>
                       </button>
                     </div>
@@ -142,17 +141,15 @@ function Header() {
                         aria-labelledby="menu-button"
                         tabIndex="-1">
                         <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
-                          <img
-                            className="h-24 w-24 rounded-full"
-                            src={user?.imageUrl}
-                            alt={user?.name}
-                          />
+                          <div className="w-24 h-24 rounded-full mx-auto profile">
+                            <RenderSmoothImage src={user?.imageUrl} alt={user?.name} />
+                          </div>
                           <h5> {user?.name}</h5>
                         </div>
                         <ul className="py-1 text-sm text-center">
-                          <a
+                          <NavLink
                             className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
-                            href="/profile">
+                            to="/profile">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="icon icon-tabler icon-tabler-user-circle"
@@ -170,10 +167,10 @@ function Header() {
                               <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
                             </svg>
                             <p className="block ml-1 capitalize">profile</p>
-                          </a>
-                          <a
+                          </NavLink>
+                          <NavLink
                             className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
-                            href="/settings">
+                            to="/setting">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="icon icon-tabler icon-tabler-settings"
@@ -190,7 +187,7 @@ function Header() {
                               <circle cx="12" cy="12" r="3"></circle>
                             </svg>
                             <p className="block ml-1 capitalize">settings</p>
-                          </a>
+                          </NavLink>
                         </ul>
                         <div className="py-1">
                           <button
@@ -345,12 +342,9 @@ function Header() {
                       aria-expanded="true"
                       aria-haspopup="true">
                       <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2 animate-bounce">
-                        <img
-                          title="Profile"
-                          className="h-8 w-8 rounded-full"
-                          src={user?.imageUrl}
-                          alt={user?.name}
-                        />
+                        <div className="w-8 h-8 rounded-full mx-auto profile">
+                          <RenderSmoothImage src={user?.imageUrl} alt={user?.name} />
+                        </div>
                       </div>
                     </button>
                   </div>
@@ -362,17 +356,16 @@ function Header() {
                       aria-labelledby="menu-button"
                       tabIndex="-1">
                       <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
-                        <img
-                          className="h-24 w-24 rounded-full"
-                          src={user?.imageUrl}
-                          alt={user?.name}
-                        />
+                        <div className="w-24 h-24 rounded-full mx-auto profile">
+                          <RenderSmoothImage src={user?.imageUrl} alt={user?.name} />
+                        </div>
                         <h5> {user?.name}</h5>
                       </div>
                       <ul className="py-1 text-sm text-center">
-                        <a
-                          className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
-                          href="/profile">
+                        <NavLink
+                          to="/profile"
+                          className="flex py-2 items-center justify-center text-black px-2
+                          hover:bg-gray-700 hover:text-white">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="icon icon-tabler icon-tabler-user-circle"
@@ -390,10 +383,10 @@ function Header() {
                             <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
                           </svg>
                           <p className="block ml-1 capitalize">profile</p>
-                        </a>
-                        <a
+                        </NavLink>
+                        <NavLink
                           className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
-                          href="/settings">
+                          to="/setting">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="icon icon-tabler icon-tabler-settings"
@@ -410,7 +403,7 @@ function Header() {
                             <circle cx="12" cy="12" r="3"></circle>
                           </svg>
                           <p className="block ml-1 capitalize">settings</p>
-                        </a>
+                        </NavLink>
                       </ul>
                       <div className="py-1">
                         <button

@@ -6,6 +6,16 @@
 body {
   font-family: 'SolaimanLipi', Arial, sans-serif !important;
 }
+.profile img.smooth-image.img-visible {
+  border: none;
+}
+.profile .smooth-image-wrapper .smooth-preloader .loader {
+  background-image: linear-gradient(to right, #e6e6e6, #fff, #e6e6e6);
+  display: inline-block;
+  background-size: 100%;
+  border-radius: 100% !important;
+  animation: preloader-block 2s linear 0s infinite reverse forwards;
+}
 img.smooth-image.img-visible {
   object-fit: unset !important;
   border: 1px solid red;

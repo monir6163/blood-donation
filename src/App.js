@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import AuthProvider from './context/AuthProvider';
 import useAuthentication from './Hooks/useAuthentication';
-import AllUser from './Pages/Home/AllUser';
+import Donated from './Pages/Donated/Donated';
 import Home from './Pages/Home/Home';
 import Notfound from './Pages/NotFound/Notfound';
 import Requestblood from './Pages/RequestBlood/Requestblood';
@@ -50,7 +50,7 @@ function App() {
           {/* <Route path="/*" element={<PrivateOutlet />}>
             <Route path="requestbloodlist" element={<RequestBloodList />} />
           </Route> */}
-          <Route path="/alldonar" element={<AllUser />} />
+          <Route path="/alldonated" element={<Donated />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route

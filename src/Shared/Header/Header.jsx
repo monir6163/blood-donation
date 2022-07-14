@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,8 +12,26 @@ function Header() {
   const { user, logout, setShouldUpdate } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  // const ref = useRef(null);
-  // useClickOutside(ref, () => setDropdown(false));
+  const wrapperRef = useRef(null);
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setDropdown((prevState) => !prevState);
+      }
+    }
+    // Bind the event listener
+    if (dropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdown]);
   const location = useNavigate();
   const [windowHeight, setWindowHeight] = useState(false);
   const handleLogout = async () => {
@@ -135,6 +153,7 @@ function Header() {
                     </div>
                     {dropdown && (
                       <div
+                        ref={wrapperRef}
                         className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 focus:outline-none"
                         role="menu"
                         aria-orientation="vertical"

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { CirclesWithBar } from 'react-loader-spinner';
 import useAllbloodRequest from '../../Hooks/useAllbloodRequest';
 import Top from '../../Shared/Top';
 import BloodCard from './BloodCard';
@@ -61,9 +62,15 @@ const RequestBloodList = () => {
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 gap-5">
           {displayuser?.length === 0 ? (
             <div className="flex justify-center items-center">
-              <div className="text-center font-semibold text-red-700">
-                <h1 className="text-center py-20">( {value} ) রক্ত পাওয়া যায়নি....</h1>
-              </div>
+              {value === '' ? (
+                <div className="text-center w-9 mx-auto">
+                  <CirclesWithBar width="50px" color="red" outerCircleColor="green" />
+                </div>
+              ) : (
+                <div className="text-center font-semibold text-red-700">
+                  <h1 className="text-center py-20">( {value} ) রক্ত পাওয়া যায়নি....</h1>
+                </div>
+              )}
             </div>
           ) : (
             displayuser?.map((all) => <BloodCard key={all._id} request={all}></BloodCard>)

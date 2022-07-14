@@ -6,7 +6,7 @@ const useAllbloodRequest = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   useEffect(() => {
-    const url = `http://localhost:5000/blood/api/bloodRequests/?page=${pageNumber}`;
+    const url = `https://baroque-fromage-48977.herokuapp.com/blood/api/bloodRequests/?page=${pageNumber}`;
     fetch(url)
       .then((res) => res.json())
       .then(({ totalPages, bloodData }) => {

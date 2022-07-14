@@ -31,7 +31,7 @@ const Login = () => {
       password
     };
     await axios
-      .post('http://localhost:5000/user/login', data)
+      .post('https://baroque-fromage-48977.herokuapp.com/user/login', data)
       .then((res) => {
         if (res) {
           toast.success('User Login SuccessFull !');
@@ -42,8 +42,8 @@ const Login = () => {
       })
       .catch((err) => {
         if (err?.request?.status === 401) {
-          setIsLoading(false);
           toast.error('Authentication failed.');
+          setIsLoading(false);
         }
       });
   };

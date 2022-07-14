@@ -206,7 +206,7 @@ const Requestblood = () => {
     try {
       setLoading(true);
       e.target.reset();
-      const url = 'http://localhost:5000/blood/api/bloodRequests';
+      const url = 'https://baroque-fromage-48977.herokuapp.com/blood/api/bloodRequests';
       await axios.post(url, { ...finalData }).then((res) => {
         if (res) {
           e.target.reset();

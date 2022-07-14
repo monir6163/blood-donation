@@ -4,7 +4,7 @@ const useAuthentication = () => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldUpdate, setShouldUpdate] = useState(false);
-  const url = 'http://localhost:5000/user/me';
+  const url = 'https://baroque-fromage-48977.herokuapp.com/user/me';
 
   const token = localStorage.getItem('token');
   const logout = () => {

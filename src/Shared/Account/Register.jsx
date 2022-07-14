@@ -182,7 +182,7 @@ const Register = () => {
         if (url) {
           axios
             .post(
-              'http://localhost:5000/user/register',
+              'https://baroque-fromage-48977.herokuapp.com/user/register',
               { ...intialValues, imageUrl: url },
               {
                 headers: {
@@ -209,7 +209,7 @@ const Register = () => {
     });
   };
   useEffect(() => {
-    axios('http://localhost:5000/division/all')
+    axios('https://baroque-fromage-48977.herokuapp.com/division/all')
       .then((data) => {
         setDivision(data.data);
       })
@@ -219,7 +219,7 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:5000/district/all')
+    axios('https://baroque-fromage-48977.herokuapp.com/district/all')
       .then((data) => {
         setDistrict(data.data);
       })
@@ -229,7 +229,7 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:5000/upazila/all')
+    axios('https://baroque-fromage-48977.herokuapp.com/upazila/all')
       .then((data) => {
         setUpzilla(data.data);
       })
@@ -239,7 +239,7 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:5000/union/all')
+    axios('https://baroque-fromage-48977.herokuapp.com/union/all')
       .then((data) => {
         setUnion(data.data);
       })

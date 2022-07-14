@@ -6,7 +6,7 @@ const useDonated = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   useEffect(() => {
-    const url = `http://localhost:5000/user/donated?page=${pageNumber}`;
+    const url = `https://baroque-fromage-48977.herokuapp.com/user/donated?page=${pageNumber}`;
     fetch(url)
       .then((res) => res.json())
       .then(({ totalPages, allDonated }) => {

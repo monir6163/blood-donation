@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "62a732d8db067bc4c11cf3bb"
+  },
+  "title": "This is my todo",
+  "description": "This is awoesome Mongoose",
+  "status": "active",
+  "date": {
+    "$date": {
+      "$numberLong": "1655124696003"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a736933f9b1ce4abcdc683"
+  },
+  "title": "This is my mongoose",
+  "description": "This is awoesome Mongoose using",
+  "status": "active",
+  "date": {
+    "$date": {
+      "$numberLong": "1655125651960"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a736933f9b1ce4abcdc684"
+  },
+  "title": "This is my mongoose Database",
+  "description": "This is awoesome Mongoose using Database",
+  "status": "active",
+  "date": {
+    "$date": {
+      "$numberLong": "1655125651961"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a740924375b34f6d44c9f4"
+  },
+  "title": "update data",
+  "description": "but console error",
+  "status": "Inactive",
+  "date": {
+    "$date": {
+      "$numberLong": "1655128210889"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a7f17af2c8f59e05872faf"
+  },
+  "title": "update data 2",
+  "description": "but console error",
+  "status": "active",
+  "date": {
+    "$date": {
+      "$numberLong": "1655173498151"
+    }
+  },
+  "__v": 0
+}]

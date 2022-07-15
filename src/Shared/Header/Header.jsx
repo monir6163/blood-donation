@@ -281,6 +281,7 @@ function Header() {
             <div ref-setter={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <li className=" px-3 py-2 mx-2">
                 <NavLink
+                  onClick={() => setIsOpen(!isOpen)}
                   className={({ isActive }) =>
                     isActive
                       ? 'text-main-yellow border-b-2 border-main-yellow'
@@ -293,6 +294,7 @@ function Header() {
               {user?.donar === '2' ? (
                 <li className=" px-3 py-2 mx-2">
                   <NavLink
+                    onClick={() => setIsOpen(!isOpen)}
                     className={({ isActive }) =>
                       isActive
                         ? 'text-main-yellow border-b-2 border-main-yellow'
@@ -305,6 +307,7 @@ function Header() {
               ) : !user ? (
                 <li className=" px-3 py-2 mx-2">
                   <NavLink
+                    onClick={() => setIsOpen(!isOpen)}
                     className={({ isActive }) =>
                       isActive
                         ? 'text-main-yellow border-b-2 border-main-yellow'
@@ -320,6 +323,7 @@ function Header() {
 
               <li className=" px-3 py-2 mx-2">
                 <NavLink
+                  onClick={() => setIsOpen(!isOpen)}
                   className={({ isActive }) =>
                     isActive
                       ? 'text-main-yellow border-b-2 border-main-yellow'
@@ -332,6 +336,7 @@ function Header() {
 
               <li className=" px-3 py-2 mx-2">
                 <NavLink
+                  onClick={() => setIsOpen(!isOpen)}
                   className={({ isActive }) =>
                     isActive
                       ? 'text-main-yellow border-b-2 border-main-yellow'
@@ -344,7 +349,7 @@ function Header() {
 
               {!user?.name ? (
                 <li>
-                  <NavLink to="/login">
+                  <NavLink onClick={() => setIsOpen(!isOpen)} to="/login">
                     <button type="button" className="primary-btn">
                       রক্ত দিতে / রক্ত নিতে ইচ্ছুক
                     </button>
@@ -382,6 +387,7 @@ function Header() {
                       </div>
                       <ul className="py-1 text-sm text-center">
                         <NavLink
+                          onClick={() => setIsOpen(!isOpen)}
                           to="/profile"
                           className="flex py-2 items-center justify-center text-black px-2
                           hover:bg-gray-700 hover:text-white">
@@ -404,6 +410,7 @@ function Header() {
                           <p className="block ml-1 capitalize">profile</p>
                         </NavLink>
                         <NavLink
+                          onClick={() => setIsOpen(!isOpen)}
                           className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
                           to="/setting">
                           <svg

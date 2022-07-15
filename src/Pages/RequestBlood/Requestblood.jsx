@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { CirclesWithBar } from 'react-loader-spinner';
+import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../Hooks/useAuth';
@@ -19,7 +20,6 @@ const Requestblood = () => {
 
   const RequestbloodForm = async (e) => {
     e.preventDefault();
-    setData({});
     setError({});
 
     if (
@@ -212,6 +212,7 @@ const Requestblood = () => {
           e.target.reset();
           toast.success('Blood Request SuccessFull !');
           setLoading(false);
+          <Navigate to="/requestbloodlist" />;
         } else {
           toast.error('Something Went Wrong. Please Try Again !');
           setLoading(false);

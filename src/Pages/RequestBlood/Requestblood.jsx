@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { CirclesWithBar } from 'react-loader-spinner';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../Hooks/useAuth';
@@ -17,11 +17,10 @@ const Requestblood = () => {
   const [data, setData] = useState({});
   const [error, setError] = useState({});
   const regex = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
-  const location = useLocation();
+  const location = useNavigate();
   const RequestbloodForm = async (e) => {
     e.preventDefault();
     setError({});
-
     if (
       !data.name &&
       !data.number &&

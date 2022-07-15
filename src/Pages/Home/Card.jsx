@@ -30,7 +30,7 @@ const Card = (props) => {
           নাম: <span className="eng">{name}</span>
         </div>
         <div className="grid grid-cols-12 md:gap-4 mt-3 mb-3">
-          <div className="col-span-12 lg:col-span-6 flex flex-col text-left mx-auto">
+          <div className="col-span-6 flex flex-col text-left mx-auto">
             <div className="font-semibold text-sm">
               নাম্বার: <span className="eng">{number}</span>
             </div>
@@ -60,7 +60,7 @@ const Card = (props) => {
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-6 flex flex-col text-left mx-auto">
+          <div className="col-span-6 flex flex-col text-left mx-auto">
             <div className="font-semibold text-sm">
               বিভাগ: <span className="eng font-normal">{divisionId?.bn_name}</span>
             </div>

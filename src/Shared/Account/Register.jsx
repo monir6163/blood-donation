@@ -39,7 +39,9 @@ const Register = () => {
   const location = useLocation();
   const history = useNavigate();
   const regex = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
-  const ageregex = /^[0-9]*$/;
+  const bnRegx = /(\+৮৮|৮৮|০১)?[০-৯]{11}/g;
+  const ageregexeng = /^[0-9]*$/;
+  const ageregexbn = /^[০-৯]*$/;
   const handleimage = (e) => {
     const img = e.target.files[0];
     setImage(img);
@@ -94,8 +96,8 @@ const Register = () => {
       setAgeerror('Age is Required');
       setIsLoading(false);
       return;
-    } else if (!ageregex.test(age)) {
-      setAgeerror('Only Number Allow');
+    } else if (!ageregexeng.test(age) && !ageregexbn.test(age)) {
+      setAgeerror('Only Eng or Bn Number Allow');
       setIsLoading(false);
       return;
     } else if (age.length > 2) {
@@ -137,7 +139,7 @@ const Register = () => {
       setNumberError('Number is Required');
       setIsLoading(false);
       return;
-    } else if (!regex.test(number)) {
+    } else if (!regex.test(number) && !bnRegx.test(number)) {
       setNumberError('Only Valid Number Allow & 11 Digits');
       setIsLoading(false);
       return;

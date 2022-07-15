@@ -17,6 +17,7 @@ const Requestblood = () => {
   const [data, setData] = useState({});
   const [error, setError] = useState({});
   const regex = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
+  const bnRegx = /(\+৮৮|৮৮|০১)?[০-৯]{11}/g;
   const location = useNavigate();
   const RequestbloodForm = async (e) => {
     e.preventDefault();
@@ -52,7 +53,7 @@ const Requestblood = () => {
       data.details &&
       data.donarCost
     ) {
-      if (!regex.test(data.number)) {
+      if (!regex.test(data.number) && !bnRegx.test(data.number)) {
         return setError({
           number: 'Only Valid Number Allow'
         });

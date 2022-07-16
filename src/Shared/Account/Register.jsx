@@ -31,6 +31,7 @@ const Register = () => {
   const [bloodGroup, setBloodGroup] = useState();
   const [image, setImage] = useState();
   const [number, setNumber] = useState();
+  const [pc, setPc] = useState();
   const [password, setPassword] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [donar, setDonar] = useState();
@@ -42,6 +43,7 @@ const Register = () => {
   const bnRegx = /(\+৮৮|৮৮|০১)?[০-৯]{11}/g;
   const ageregexeng = /^[0-9]*$/;
   const ageregexbn = /^[০-৯]*$/;
+  const [toggle, setToggle] = useState(false);
   const handleimage = (e) => {
     const img = e.target.files[0];
     setImage(img);
@@ -54,12 +56,14 @@ const Register = () => {
     donar,
     donarTimes,
     number,
+    pc,
     divisionId,
     districtId,
     upazilaId,
     unionId,
     password
   };
+
   const [Nameerror, setNameerror] = useState('');
   const [Ageerror, setAgeerror] = useState('');
   const [blood, setBlood] = useState('');
@@ -70,9 +74,11 @@ const Register = () => {
   const [uniId, setUniId] = useState('');
   const [numberError, setNumberError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [pcError, setPcError] = useState('');
   const handlesubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     //validation code
     setNameerror('');
     setAgeerror('');
@@ -83,6 +89,7 @@ const Register = () => {
     setDivId('');
     setDisId('');
     setUpoId('');
+    setPcError('');
     setUniId('');
     if (!name) {
       setIsLoading(false);
@@ -115,6 +122,13 @@ const Register = () => {
       setIsLoading(false);
       return;
     }
+    if (toggle) {
+      if (pc === undefined) {
+        setPcError('Pc is Required');
+        setIsLoading(false);
+        return;
+      }
+    }
     if (!divisionId) {
       setDivId('Division is Required');
       setIsLoading(false);
@@ -130,7 +144,7 @@ const Register = () => {
       setIsLoading(false);
       return;
     }
-    if (!unionId) {
+    if (unionId === '') {
       setUniId('Union is Required');
       setIsLoading(false);
       return;
@@ -156,6 +170,11 @@ const Register = () => {
       setPasswordError('Password Must be 10 characters');
       setIsLoading(false);
       return;
+    }
+    if (toggle) {
+      setUnionID('');
+    } else {
+      setPc('');
     }
     //end validation code
     if (image) {
@@ -184,7 +203,7 @@ const Register = () => {
         if (url) {
           axios
             .post(
-              'https://baroque-fromage-48977.herokuapp.com/user/register',
+              'http://localhost:5000/user/register',
               { ...intialValues, imageUrl: url },
               {
                 headers: {
@@ -297,7 +316,8 @@ const Register = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label className="text-sm tracking-wide mb-3">
-                  নাম <span className="text-red-600">*</span>
+                  নাম <span className="text-red-600">*</span>{' '}
+                  <small>সর্বোচ্চ ২০ অক্ষর হতে হবে </small>
                 </label>
                 <input
                   className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -480,22 +500,50 @@ const Register = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 md:pt-4">
               <div>
-                <label className="text-sm tracking-wide mb-2">
-                  ইউনিয়ন <span className="text-red-600">*</span>{' '}
-                </label>
-                <select
-                  name=""
-                  id=""
-                  className="w-full py-2 border rounded-lg focus:outline-none"
-                  onChange={handleunionId}>
-                  <option hidden>ইউনিয়ন বাছাই করুন</option>
-                  {unionName?.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.bn_name}
-                    </option>
-                  ))}
-                </select>
-                <p className="text-red-600">{uniId}</p>
+                <div>
+                  আপনি ইউনিয়ন পর্যায়ে না হন তাহলে সিলেক্ট করুন ?{' '}
+                  <input
+                    onClick={() => {
+                      setToggle(!toggle);
+                    }}
+                    type="checkbox"
+                    name="check"
+                  />
+                </div>
+                {toggle ? (
+                  <>
+                    {' '}
+                    <label className="text-sm tracking-wide mb-2">
+                      পৌরসভা / সিটি কর্পোরেশন নাম বাংলায়<span className="text-red-600">*</span>{' '}
+                    </label>
+                    <input
+                      className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      type="text"
+                      placeholder="পৌরসভা / সিটি কর্পোরেশন নাম"
+                      onChange={(e) => setPc(e.target.value)}
+                    />
+                    <p className="text-red-600">{pcError}</p>
+                  </>
+                ) : (
+                  <>
+                    <label className="text-sm tracking-wide mb-2">
+                      ইউনিয়ন <span className="text-red-600">*</span>{' '}
+                    </label>
+                    <select
+                      name=""
+                      id=""
+                      className="w-full py-2 border rounded-lg focus:outline-none"
+                      onChange={handleunionId}>
+                      <option hidden>ইউনিয়ন বাছাই করুন</option>
+                      {unionName?.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.bn_name}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="text-red-600">{uniId}</p>
+                  </>
+                )}
               </div>
               <div>
                 <label className="text-sm tracking-wide mb-2">

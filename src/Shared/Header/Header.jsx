@@ -135,7 +135,7 @@ function Header() {
                     </NavLink>
                   </li>
                 ) : (
-                  <div className="relative inline-block text-left">
+                  <div className="relative inline-block text-left" ref={wrapperRef}>
                     <div className="flex justify-center items-center">
                       <button
                         onClick={() => setDropdown(!dropdown)}
@@ -153,7 +153,6 @@ function Header() {
                     </div>
                     {dropdown && (
                       <div
-                        ref={wrapperRef}
                         className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 focus:outline-none"
                         role="menu"
                         aria-orientation="vertical"
@@ -168,7 +167,8 @@ function Header() {
                         <ul className="py-1 text-sm text-center">
                           <NavLink
                             className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
-                            to="/profile">
+                            to="/profile"
+                            onClick={() => setDropdown(false)}>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="icon icon-tabler icon-tabler-user-circle"
@@ -188,6 +188,7 @@ function Header() {
                             <p className="block ml-1 capitalize">profile</p>
                           </NavLink>
                           <NavLink
+                            onClick={() => setDropdown(false)}
                             className="flex py-2 items-center justify-center text-black px-2 hover:bg-gray-700 hover:text-white"
                             to="/setting">
                             <svg

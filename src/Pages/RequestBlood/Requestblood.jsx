@@ -246,12 +246,12 @@ const Requestblood = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                   <div className="">
                     <label className="text-sm tracking-wide mb-3">
-                      রোগীর / অনুরোধকারীর নাম <span className="text-red-600">*</span>
+                      রোগীর / অনুরোধকারীর নাম বাংলায় <span className="text-red-600">*</span>
                     </label>
                     <input
                       className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
-                      placeholder="রোগীর / অনুরোধকারীর নাম"
+                      placeholder="রোগীর / অনুরোধকারীর নাম বাংলায়"
                       id="name"
                       onChange={(e) => {
                         setError((prevState) => ({ ...prevState, name: '' }));
@@ -280,12 +280,12 @@ const Requestblood = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                   <div>
                     <label className="text-sm tracking-wide mb-3">
-                      হাসপাতাল নাম <span className="text-red-600">*</span>
+                      হাসপাতাল নাম বাংলায় <span className="text-red-600">*</span>
                     </label>
                     <input
                       className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
-                      placeholder="হাসপাতাল নাম"
+                      placeholder="হাসপাতাল নাম বাংলায়"
                       id="hospitalName"
                       onChange={(e) => {
                         setError((prevState) => ({ ...prevState, hospitalName: '' }));
@@ -296,12 +296,12 @@ const Requestblood = () => {
                   </div>
                   <div>
                     <label className="text-sm tracking-wide mb-2">
-                      ঠিকানা <span className="text-red-600">*</span>
+                      ঠিকানা লিখুন বাংলায়<span className="text-red-600">*</span>
                     </label>
                     <input
                       className="appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
-                      placeholder="ঠিকানা লিখুন / উপজেলা / ইউনিয়ন"
+                      placeholder="পৌরসভা / সিটি কর্পোরেশন  / উপজেলা / ইউনিয়ন বাংলায়"
                       id="address"
                       onChange={(e) => {
                         setError((prevState) => ({ ...prevState, address: '' }));
@@ -357,7 +357,7 @@ const Requestblood = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                   <div>
                     <label className="text-sm tracking-wide mb-3">
-                      রোগের বিবরণ লিখুন <span className="text-red-600">*</span>
+                      রোগের বিবরণ লিখুন বাংলায়<span className="text-red-600">*</span>
                     </label>
                     <textarea
                       id="details"
@@ -365,7 +365,8 @@ const Requestblood = () => {
                         setError((prevState) => ({ ...prevState, details: '' }));
                         setData((prevState) => ({ ...prevState, details: e.target.value }));
                       }}
-                      className="appearance-none border rounded-lg w-full py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                      className="appearance-none border rounded-lg w-full py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      placeholder="রোগের বিবরণ লিখুন বাংলায়"></textarea>
                     <p className="text-sm text-red-700">{error.details}</p>
                   </div>
                   <div>

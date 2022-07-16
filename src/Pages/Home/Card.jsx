@@ -13,7 +13,8 @@ const Card = (props) => {
     divisionId,
     districtId,
     upazilaId,
-    unionId
+    unionId,
+    pc
   } = props?.user;
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-2xl border-rose-500 border text-center transform duration-500 hover:translate-y-1">
@@ -71,7 +72,8 @@ const Card = (props) => {
               উপজেলা: <span className="eng font-normal">{upazilaId?.bn_name}</span>
             </div>
             <div className="font-semibold text-sm">
-              ইউনিয়ন: <span className="eng font-normal">{unionId?.bn_name}</span>
+              {unionId ? 'ইউনিয়ন' : 'পৌর / সিটি'}:{' '}
+              <span className="eng font-normal">{unionId?.bn_name ? unionId?.bn_name : pc}</span>
             </div>
           </div>
         </div>

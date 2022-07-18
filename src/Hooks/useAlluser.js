@@ -7,7 +7,7 @@ const useAlluser = () => {
   // const [numberOfPages, setNumberOfPages] = useState(0);
 
   useEffect(() => {
-    const url = 'http://localhost:5000/user/all';
+    const url = 'https://baroque-fromage-48977.herokuapp.com/user/all';
     fetch(url)
       .then((res) => res.json())
       .then(({ totalPages, allUsers }) => {

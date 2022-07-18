@@ -203,7 +203,7 @@ const Register = () => {
         if (url) {
           axios
             .post(
-              'http://localhost:5000/user/register',
+              'https://baroque-fromage-48977.herokuapp.com/user/register',
               { ...intialValues, imageUrl: url },
               {
                 headers: {

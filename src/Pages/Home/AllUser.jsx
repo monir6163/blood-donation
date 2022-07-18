@@ -11,10 +11,15 @@ const AllUser = () => {
       'রক্ত দাতাদের তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
   }, []);
   const data = 12;
+  const [load, setLoad] = useState(false);
   const [show, setShow] = useState(data);
   const [user, displayuser, setDisplayUser] = useAlluser();
   const handleMoreImage = () => {
-    setShow(show + data);
+    setLoad(true);
+    setTimeout(() => {
+      setShow(show + data);
+      setLoad(false);
+    }, 500);
   };
   // const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
   // const gotoPrevious = () => {
@@ -176,17 +181,25 @@ const AllUser = () => {
             </div>
           </div>
         )} */}
-        <div className="text-center mt-5">
-          {show < displayuser?.length && (
-            <button
-              onClick={handleMoreImage}
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-400 text-white font-normal py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-              {/* <IconCircleDotted className="animate-spin-slow" />  */}
-              আরো দেখুন
-            </button>
-          )}
-        </div>
+        {load ? (
+          <div className=" flex justify-center mt-5 animate-spin-slow">
+            {/* <IconCircleDotted /> */}
+            <CirclesWithBar width="50px" color="red" outerCircleColor="green" />
+          </div>
+        ) : (
+          <>
+            {show < displayuser?.length && (
+              <div className="flex justify-center">
+                <button
+                  onClick={handleMoreImage}
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-400 text-white font-normal py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-5">
+                  আরো দেখুন
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </section>
     </>
   );

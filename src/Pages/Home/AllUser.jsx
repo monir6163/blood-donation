@@ -10,17 +10,21 @@ const AllUser = () => {
     document.title =
       'রক্ত দাতাদের তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
   }, []);
-  const [user, pageNumber, numberOfPages, setPageNumber, displayuser, setDisplayUser] =
-    useAlluser();
-
-  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
-  const gotoPrevious = () => {
-    setPageNumber(Math.max(0, pageNumber - 1));
+  const data = 12;
+  const [show, setShow] = useState(data);
+  const [user, displayuser, setDisplayUser] = useAlluser();
+  const handleMoreImage = () => {
+    setShow(show + data);
   };
+  // const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+  // const gotoPrevious = () => {
+  //   setPageNumber(Math.max(0, pageNumber - 1));
+  // };
 
-  const gotoNext = () => {
-    setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
-  };
+  // const gotoNext = () => {
+  //   setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+  // };
+
   const [address, setAddress] = useState([]);
   useEffect(() => {
     axios('https://baroque-fromage-48977.herokuapp.com/district/all')
@@ -49,7 +53,13 @@ const AllUser = () => {
       setDisplayUser(filterUser);
     }
   };
-
+  // const handleLoad = () => {
+  //   setDisplayUser((prev) => [...prev, displayuser]);
+  //   if (displayuser.length > 0) {
+  //     setPageNumber(+pageNumber);
+  //     setHasMore(false);
+  //   }
+  // };
   return (
     <>
       <Top />
@@ -106,11 +116,11 @@ const AllUser = () => {
               )}
             </div>
           ) : (
-            displayuser?.map((all) => <Card key={all._id} user={all}></Card>)
+            displayuser?.slice(0, show)?.map((all) => <Card key={all._id} user={all}></Card>)
           )}
         </section>
 
-        {displayuser?.length === 0 ? (
+        {/* {displayuser?.length === 0 ? (
           ''
         ) : (
           <div className="bg-white px-4 py-3 flex items-center text-center justify-between border-t border-gray-200 sm:px-6">
@@ -165,7 +175,18 @@ const AllUser = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
+        <div className="text-center mt-5">
+          {show < displayuser?.length && (
+            <button
+              onClick={handleMoreImage}
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-400 text-white font-normal py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+              {/* <IconCircleDotted className="animate-spin-slow" />  */}
+              আরো দেখুন
+            </button>
+          )}
+        </div>
       </section>
     </>
   );

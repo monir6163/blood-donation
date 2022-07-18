@@ -9,17 +9,20 @@ const RequestBloodList = () => {
     document.title =
       'রক্তের আবেদন তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
   }, []);
-  const [bloodRequest, pageNumber, numberOfPages, setPageNumber, displayuser, setDisplayUser] =
-    useAllbloodRequest();
-
-  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
-  const gotoPrevious = () => {
-    setPageNumber(Math.max(0, pageNumber - 1));
+  const data = 12;
+  const [show, setShow] = useState(data);
+  const [bloodRequest, displayuser, setDisplayUser] = useAllbloodRequest();
+  const handleMoreImage = () => {
+    setShow(show + data);
   };
+  // const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+  // const gotoPrevious = () => {
+  //   setPageNumber(Math.max(0, pageNumber - 1));
+  // };
 
-  const gotoNext = () => {
-    setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
-  };
+  // const gotoNext = () => {
+  //   setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+  // };
   const [value, setValue] = useState('');
   const handleSearchField = (e) => {
     e.preventDefault();
@@ -73,11 +76,13 @@ const RequestBloodList = () => {
               )}
             </div>
           ) : (
-            displayuser?.map((all) => <BloodCard key={all._id} request={all}></BloodCard>)
+            displayuser
+              ?.slice(0, show)
+              ?.map((all) => <BloodCard key={all._id} request={all}></BloodCard>)
           )}
         </section>
 
-        {displayuser?.length === 0 ? (
+        {/* {displayuser?.length === 0 ? (
           ''
         ) : (
           <div className="bg-white px-4 py-3 flex items-center text-center justify-between border-t border-gray-200 sm:px-6">
@@ -132,7 +137,18 @@ const RequestBloodList = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
+        <div className="text-center mt-5">
+          {show < displayuser?.length && (
+            <button
+              onClick={handleMoreImage}
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-400 text-white font-normal py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+              {/* <IconCircleDotted className="animate-spin-slow" />  */}
+              আরো দেখুন
+            </button>
+          )}
+        </div>
       </section>
     </>
   );

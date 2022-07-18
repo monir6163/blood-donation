@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { CirclesWithBar } from 'react-loader-spinner';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../Hooks/useAuth';
@@ -19,6 +19,11 @@ const Requestblood = () => {
   const regex = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
   const bnRegx = /(\+৮৮|৮৮|০১)?[০-৯]{11}/g;
   const location = useNavigate();
+
+  if (user.donar === '1') {
+    const redirect = '/';
+    return <Navigate to={redirect} replace />;
+  }
   const RequestbloodForm = async (e) => {
     e.preventDefault();
     setError({});

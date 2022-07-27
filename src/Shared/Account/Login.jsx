@@ -30,14 +30,16 @@ const Login = () => {
       number,
       password
     };
+    const url = 'https://baroque-fromage-48977.herokuapp.com/user/login';
     await axios
-      .post('https://baroque-fromage-48977.herokuapp.com/user/login', data)
+      .post(url, data)
       .then((res) => {
         if (res) {
           toast.success('User Login SuccessFull !');
           localStorage.setItem('token', res.data.token);
           setShouldUpdate((prevState) => !prevState);
           setIsLoading(false);
+          console.log(res.data.token);
         }
       })
       .catch((err) => {

@@ -1,16 +1,28 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useAuthentication = () => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldUpdate, setShouldUpdate] = useState(false);
-  const [profile, setProfile] = useState({});
+
   const url = 'https://baroque-fromage-48977.herokuapp.com/user/me';
   const token = localStorage.getItem('token');
   const logout = () => {
     localStorage.removeItem('token');
   };
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    fetch(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProfile(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [user?.id]);
+
   useEffect(() => {
     const auth = async () => {
       if (token) {
@@ -43,13 +55,7 @@ const useAuthentication = () => {
     };
     auth();
   }, [shouldUpdate, token]);
-  useEffect(() => {
-    axios.get(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`).then((res) => {
-      if (res.data.user) {
-        setProfile(res.data.user);
-      }
-    });
-  }, [user?.id]);
+
   return {
     user,
     setUser,

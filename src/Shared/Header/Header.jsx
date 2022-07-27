@@ -9,7 +9,7 @@ import useAuth from '../../Hooks/useAuth';
 import Logo from '../../images/logo.png';
 
 function Header() {
-  const { profile, logout, setShouldUpdate } = useAuth();
+  const { user, profile, logout, setShouldUpdate } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const wrapperRef = useRef(null);
@@ -47,6 +47,7 @@ function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   return (
     <nav
       className={`list-none text-white bg-red-700 font-bold text-base shadow-md  ${
@@ -75,7 +76,7 @@ function Header() {
                     হোম
                   </NavLink>
                 </li>
-                {profile?.donar === '2' ? (
+                {user?.donar === '2' ? (
                   <li className=" px-3 py-2 mx-2">
                     <NavLink
                       className={({ isActive }) =>
@@ -87,7 +88,7 @@ function Header() {
                       রক্তের জন্য অনুরোধ পাঠান
                     </NavLink>
                   </li>
-                ) : !profile ? (
+                ) : !user ? (
                   <li className=" px-3 py-2 mx-2">
                     <NavLink
                       className={({ isActive }) =>
@@ -126,7 +127,7 @@ function Header() {
                     রক্ত দাতাদের তালিকা
                   </NavLink>
                 </li>
-                {!profile?.name ? (
+                {!user?.name ? (
                   <li>
                     <NavLink to="/login">
                       <button type="button" className="primary-btn">
@@ -145,9 +146,11 @@ function Header() {
                         aria-expanded="true"
                         aria-haspopup="true">
                         <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2 animate-bounce">
-                          <div className="w-8 h-8 rounded-full mx-auto profile">
-                            <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
-                          </div>
+                          {profile?.imageUrl && (
+                            <div className="w-8 h-8 rounded-full mx-auto profile">
+                              <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
+                            </div>
+                          )}
                         </div>
                       </button>
                     </div>
@@ -159,9 +162,11 @@ function Header() {
                         aria-labelledby="menu-button"
                         tabIndex="-1">
                         <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
-                          <div className="w-24 h-24 rounded-full mx-auto profile">
-                            <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
-                          </div>
+                          {profile?.imageUrl && (
+                            <div className="w-24 h-24 rounded-full mx-auto profile">
+                              <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
+                            </div>
+                          )}
                           <h5> {profile?.name}</h5>
                         </div>
                         <ul className="py-1 text-sm text-center">
@@ -292,7 +297,7 @@ function Header() {
                   হোম
                 </NavLink>
               </li>
-              {profile?.donar === '2' ? (
+              {user?.donar === '2' ? (
                 <li className=" px-3 py-2 mx-2">
                   <NavLink
                     onClick={() => setIsOpen(!isOpen)}
@@ -305,7 +310,7 @@ function Header() {
                     রক্তের জন্য অনুরোধ পাঠান
                   </NavLink>
                 </li>
-              ) : !profile ? (
+              ) : !user ? (
                 <li className=" px-3 py-2 mx-2">
                   <NavLink
                     onClick={() => setIsOpen(!isOpen)}
@@ -348,7 +353,7 @@ function Header() {
                 </NavLink>
               </li>
 
-              {!profile?.name ? (
+              {!user?.name ? (
                 <li>
                   <NavLink onClick={() => setIsOpen(!isOpen)} to="/login">
                     <button type="button" className="primary-btn">
@@ -367,9 +372,11 @@ function Header() {
                       aria-expanded="true"
                       aria-haspopup="true">
                       <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2 animate-bounce">
-                        <div className="w-8 h-8 rounded-full mx-auto profile">
-                          <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
-                        </div>
+                        {profile?.imageUrl && (
+                          <div className="w-8 h-8 rounded-full mx-auto profile">
+                            <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
+                          </div>
+                        )}
                       </div>
                     </button>
                   </div>
@@ -381,9 +388,11 @@ function Header() {
                       aria-labelledby="menu-button"
                       tabIndex="-1">
                       <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
-                        <div className="w-24 h-24 rounded-full mx-auto profile">
-                          <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
-                        </div>
+                        {profile?.imageUrl && (
+                          <div className="w-24 h-24 rounded-full mx-auto profile">
+                            <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
+                          </div>
+                        )}
                         <h5> {profile?.name}</h5>
                       </div>
                       <ul className="py-1 text-sm text-center">

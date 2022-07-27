@@ -39,7 +39,6 @@ const Login = () => {
           localStorage.setItem('token', res.data.token);
           setShouldUpdate((prevState) => !prevState);
           setIsLoading(false);
-          console.log(res.data.token);
         }
       })
       .catch((err) => {

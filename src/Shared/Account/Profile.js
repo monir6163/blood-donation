@@ -5,7 +5,6 @@ import useAuth from '../../Hooks/useAuth';
 
 const Profile = () => {
   const { profile } = useAuth();
-  const { imageUrl } = profile;
 
   const [showModal, setShowModal] = useState('');
   return (
@@ -18,9 +17,9 @@ const Profile = () => {
                 <div className="top-2 px-4 animate-bounce text-red-600 z-10 text-xl font-semibold">
                   {profile?.bloodGroup}
                 </div>
-                {imageUrl && (
+                {profile?.imageUrl && (
                   <div className="w-28 h-28 rounded-full mx-auto">
-                    <RenderSmoothImage src={imageUrl} alt={profile?.name} />
+                    <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
                   </div>
                 )}
               </div>

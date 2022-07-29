@@ -63,7 +63,8 @@ const useAuthentication = () => {
     isLoading,
     setShouldUpdate,
     logout,
-    profile
+    profile,
+    setProfile
   };
 };
 

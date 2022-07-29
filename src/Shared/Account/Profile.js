@@ -7,15 +7,7 @@ import RenderSmoothImage from 'render-smooth-image-react';
 import 'render-smooth-image-react/build/style.css';
 import useAuth from '../../Hooks/useAuth';
 const Profile = () => {
-  const { user } = useAuth();
-  const [profile, setProfile] = useState({});
-  useEffect(() => {
-    fetch(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProfile(data.data);
-      });
-  }, [profile, user?.id]);
+  const { profile, user, setProfile } = useAuth();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
@@ -47,7 +39,15 @@ const Profile = () => {
     unionId: unionId ? unionId : profile?.unionId?._id,
     pc: pc ? pc : profile?.pc
   };
-  console.log(allValue);
+  const getData = async () => {
+    await axios
+      .get(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`)
+      .then((res) => {
+        setProfile(res.data.data);
+      })
+      .catch((err) => {});
+  };
+  // console.log(allValue);
   useEffect(() => {
     if (toggle) {
       if (pc) {
@@ -61,7 +61,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(allValue);
+    // console.log(allValue);
     // return;
     const updateUrl = `https://baroque-fromage-48977.herokuapp.com/user/update/${profile._id}`;
     axios
@@ -69,6 +69,7 @@ const Profile = () => {
       .then((res) => {
         if (res) {
           if (res) {
+            getData();
             toast.success('Profile Update SuccessFull !');
           }
           setShowModal(false);
@@ -272,7 +273,7 @@ const Profile = () => {
           <>
             <form className="p-3" onSubmit={handleSubmit}>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                <div className="relative w-auto mx-auto max-w-3xl">
                   {/*content*/}
                   <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                     {/*header*/}

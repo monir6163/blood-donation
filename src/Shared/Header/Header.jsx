@@ -9,18 +9,10 @@ import useAuth from '../../Hooks/useAuth';
 import Logo from '../../images/logo.png';
 
 function Header() {
-  const { user, logout, setShouldUpdate } = useAuth();
+  const { profile, user, logout, setShouldUpdate } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const wrapperRef = useRef(null);
-  const [profile, setProfile] = useState({});
-  useEffect(() => {
-    fetch(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProfile(data.data);
-      });
-  }, [profile, user?.id]);
 
   useEffect(() => {
     /**

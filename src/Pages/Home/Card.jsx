@@ -17,7 +17,7 @@ const Card = (props) => {
     pc
   } = props?.user;
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-2xl border-rose-500 border text-center transform duration-500 hover:translate-y-1">
+    <div className="max-w-sm rounded overflow-hidden shadow-2xl border-rose-500 border text-center transform duration-500 hover:translate-y-1 -z-50">
       <div className="text-center p-2">
         <div className="top-2 px-4 animate-bounce text-red-600 z-10 text-xl font-semibold">
           {bloodGroup}

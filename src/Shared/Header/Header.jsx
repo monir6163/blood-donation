@@ -383,12 +383,12 @@ function Header() {
                   </div>
                   {dropdown && (
                     <div
-                      className="origin-top-right absolute md:right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 focus:outline-none mobile_z"
+                      className="origin-top-right absolute md:right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 focus:outline-none mobile_z"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
                       tabIndex="-1">
-                      <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
+                      <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2 z-50">
                         {profile?.imageUrl && (
                           <div className="w-24 h-24 rounded-full border border-rose-600 mx-auto profile">
                             <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />

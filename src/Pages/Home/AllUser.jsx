@@ -106,7 +106,7 @@ const AllUser = () => {
         </div>
       </section>
 
-      <section className="container mx-auto py-4 px-4 md:py-4">
+      <section className="container mx-auto py-4 px-4 md:py-4 -z-50">
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 gap-5">
           {displayuser?.length === 0 ? (
             <div className="flex justify-center items-center">

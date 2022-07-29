@@ -6,7 +6,7 @@ const NewsScroll = () => {
   return (
     <div className="container mx-auto px-4 pt-10 -z-10">
       <Marquee
-        className="py-2 focus:outline-none border border-rose-500 rounded"
+        className="py-2 focus:outline-none border border-rose-500 rounded -z-50"
         speed={30}
         pauseOnHover={true}>
         <BsShieldFillCheck className="text-red-500" />{' '}

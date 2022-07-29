@@ -9,10 +9,19 @@ import useAuth from '../../Hooks/useAuth';
 import Logo from '../../images/logo.png';
 
 function Header() {
-  const { user, profile, logout, setShouldUpdate } = useAuth();
+  const { user, logout, setShouldUpdate } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const wrapperRef = useRef(null);
+  const [profile, setProfile] = useState({});
+  useEffect(() => {
+    fetch(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProfile(data.data);
+      });
+  }, [profile, user?.id]);
+
   useEffect(() => {
     /**
      * Alert if clicked on outside of element
@@ -42,7 +51,7 @@ function Header() {
   };
   useEffect(() => {
     const handleScroll = () => {
-      setWindowHeight(window.scrollY > 200);
+      setWindowHeight(window.scrollY > 100);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -163,7 +172,7 @@ function Header() {
                         tabIndex="-1">
                         <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
                           {profile?.imageUrl && (
-                            <div className="w-24 h-24 rounded-full mx-auto profile">
+                            <div className="w-24 h-24 rounded-full border border-rose-600 mx-auto profile">
                               <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
                             </div>
                           )}
@@ -283,7 +292,7 @@ function Header() {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-90">
         {(ref) => (
-          <div className="lg:hidden" id="mobile-menu">
+          <div className="lg:hidden z-10" id="mobile-menu">
             <div ref-setter={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <li className=" px-3 py-2 mx-2">
                 <NavLink
@@ -362,7 +371,7 @@ function Header() {
                   </NavLink>
                 </li>
               ) : (
-                <div className="relative inline-block text-left">
+                <div className="relative inline-block text-left" ref={wrapperRef}>
                   <div className="flex justify-center items-center">
                     <button
                       onClick={() => setDropdown(!dropdown)}
@@ -382,14 +391,14 @@ function Header() {
                   </div>
                   {dropdown && (
                     <div
-                      className="origin-top-right absolute md:right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 focus:outline-none"
+                      className="origin-top-right absolute md:right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 focus:outline-none mobile_z"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
                       tabIndex="-1">
                       <div className="py-1 px-4 text-sm text-gray-700 flex flex-col items-center justify-center space-y-2">
                         {profile?.imageUrl && (
-                          <div className="w-24 h-24 rounded-full mx-auto profile">
+                          <div className="w-24 h-24 rounded-full border border-rose-600 mx-auto profile">
                             <RenderSmoothImage src={profile?.imageUrl} alt={profile?.name} />
                           </div>
                         )}

@@ -276,3 +276,6 @@ img.smooth-image.img-visible {
 .overlay::after {
   background: unset !important;
 }
+.mobile_z {
+  z-index: 99999 !important;
+}

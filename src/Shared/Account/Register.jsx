@@ -56,12 +56,12 @@ const Register = () => {
     donar,
     donarTimes,
     number,
-    pc,
     divisionId,
     districtId,
     upazilaId,
-    unionId,
-    password
+    password,
+    pc,
+    unionId
   };
 
   const [Nameerror, setNameerror] = useState('');
@@ -75,6 +75,16 @@ const Register = () => {
   const [numberError, setNumberError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [pcError, setPcError] = useState('');
+  useEffect(() => {
+    if (toggle) {
+      if (pc) {
+        setUnionID();
+      }
+    }
+    if (unionId) {
+      setPc();
+    }
+  }, [pc, unionId, toggle]);
   const handlesubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -171,11 +181,7 @@ const Register = () => {
       setIsLoading(false);
       return;
     }
-    if (toggle) {
-      setUnionID('');
-    } else {
-      setPc('');
-    }
+
     //end validation code
     if (image) {
       if (
@@ -197,6 +203,7 @@ const Register = () => {
       setIsLoading(false);
       return;
     }
+    console.log(intialValues);
     const imageRef = ref(storage, `images/${image.name + v4()}`);
     uploadBytes(imageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {

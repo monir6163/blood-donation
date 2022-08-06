@@ -9,7 +9,7 @@ const RequestBloodList = () => {
     document.title =
       'রক্তের আবেদন তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
   }, []);
-  const data = 12;
+  const data = 8;
   const [show, setShow] = useState(data);
   const [load, setLoad] = useState(false);
   const [bloodRequest, displayuser, setDisplayUser] = useAllbloodRequest();
@@ -66,7 +66,7 @@ const RequestBloodList = () => {
         </div>
       </section>
 
-      <section className="container mx-auto py-4 px-4 md:py-4">
+      <section className="container mx-auto py-4 px-4 md:py-4 -z-50">
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 gap-5">
           {displayuser?.length === 0 ? (
             <div className="flex justify-center items-center">

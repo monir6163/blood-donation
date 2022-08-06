@@ -10,7 +10,7 @@ const AllUser = () => {
     document.title =
       'রক্ত দাতাদের তালিকা : জীবন আমাদের রক্তে গড়া, রক্তে গড়া প্রাণ। রক্ত দিয়ে বাঁচাবো মোরা শত শত প্রাণ।';
   }, []);
-  const data = 12;
+  const data = 8;
   const [load, setLoad] = useState(false);
   const [show, setShow] = useState(data);
   const [user, displayuser, setDisplayUser] = useAlluser();

@@ -58,10 +58,10 @@ function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="w-full flex items-center">
             <div className="flex-shrink-0">
-              <NavLink to="/" className="flex flex-row items-center justify-center">
+              <a href="/" className="flex flex-row items-center justify-center">
                 <img className="h-20" src={Logo} alt="Donate Blood" />
                 <span className="text-white text-lg font-bold">Donate Blood</span>
-              </NavLink>
+              </a>
             </div>
 
             <div className="ml-auto hidden lg:block">

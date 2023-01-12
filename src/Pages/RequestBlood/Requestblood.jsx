@@ -211,7 +211,8 @@ const Requestblood = () => {
     try {
       setLoading(true);
       e.target.reset();
-      const url = 'https://baroque-fromage-48977.herokuapp.com/blood/api/bloodRequests';
+      const url =
+        'https://blood-donation-backend-production.up.railway.app/blood/api/bloodRequests';
       await axios.post(url, { ...finalData }).then((res) => {
         if (res) {
           e.target.reset();

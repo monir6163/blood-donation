@@ -31,7 +31,7 @@ const Donated = () => {
   // };
   const [address, setAddress] = useState([]);
   useEffect(() => {
-    axios('https://baroque-fromage-48977.herokuapp.com/district/all')
+    axios('https://blood-donation-backend-production.up.railway.app/district/all')
       .then((data) => {
         setAddress(data.data);
       })

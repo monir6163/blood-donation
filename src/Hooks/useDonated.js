@@ -6,7 +6,7 @@ const useDonated = () => {
   // const [pageNumber, setPageNumber] = useState(0);
   // const [numberOfPages, setNumberOfPages] = useState(0);
   useEffect(() => {
-    const url = `https://baroque-fromage-48977.herokuapp.com/user/donated`;
+    const url = `https://blood-donation-backend-production.up.railway.app/user/donated`;
     fetch(url)
       .then((res) => res.json())
       .then(({ totalPages, allDonated }) => {

@@ -7,7 +7,7 @@ const useAlluser = () => {
   // const [numberOfPages, setNumberOfPages] = useState(0);
 
   useEffect(() => {
-    const url = 'https://baroque-fromage-48977.herokuapp.com/user/all';
+    const url = 'https://blood-donation-backend-production.up.railway.app/user/all';
     fetch(url)
       .then((res) => res.json())
       .then(({ totalPages, allUsers }) => {

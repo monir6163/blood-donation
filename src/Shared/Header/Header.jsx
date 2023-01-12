@@ -58,10 +58,10 @@ function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="w-full flex items-center">
             <div className="flex-shrink-0">
-              <a href="/" className="flex flex-row items-center justify-center">
+              <NavLink to="/" className="flex flex-row items-center justify-center">
                 <img className="h-20" src={Logo} alt="Donate Blood" />
                 <span className="text-white text-lg font-bold">Donate Blood</span>
-              </a>
+              </NavLink>
             </div>
 
             <div className="ml-auto hidden lg:block">
@@ -73,7 +73,7 @@ function Header() {
                         ? 'text-main-yellow border-b-2 border-main-yellow'
                         : 'transition duration-150 hover:text-main-yellow'
                     }
-                    to="/home">
+                    to="/">
                     হোম
                   </NavLink>
                 </li>
@@ -294,7 +294,7 @@ function Header() {
                       ? 'text-main-yellow border-b-2 border-main-yellow'
                       : 'transition duration-150 hover:text-main-yellow'
                   }
-                  to="/home">
+                  to="/">
                   হোম
                 </NavLink>
               </li>

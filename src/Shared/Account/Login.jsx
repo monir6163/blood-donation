@@ -30,7 +30,7 @@ const Login = () => {
       number,
       password
     };
-    const url = 'https://baroque-fromage-48977.herokuapp.com/user/login';
+    const url = 'https://blood-donation-backend-production.up.railway.app/user/login';
     await axios
       .post(url, data)
       .then((res) => {

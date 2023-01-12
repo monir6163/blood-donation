@@ -5,7 +5,7 @@ const useAuthentication = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [shouldUpdate, setShouldUpdate] = useState(false);
 
-  const url = 'https://baroque-fromage-48977.herokuapp.com/user/me';
+  const url = 'https://blood-donation-backend-production.up.railway.app/user/me';
   const token = localStorage.getItem('token');
   const logout = () => {
     localStorage.removeItem('token');
@@ -13,7 +13,7 @@ const useAuthentication = () => {
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    fetch(`https://baroque-fromage-48977.herokuapp.com/user/${user?.id}`)
+    fetch(`https://blood-donation-backend-production.up.railway.app/user/${user?.id}`)
       .then((res) => res.json())
       .then((data) => {
         setProfile(data.data);

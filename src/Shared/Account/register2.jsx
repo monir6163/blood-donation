@@ -156,7 +156,7 @@ const Register = () => {
     //end validation code
 
     axios
-      .post('https://baroque-fromage-48977.herokuapp.com/user/register', intialValues)
+      .post('https://blood-donation-backend-production.up.railway.app/user/register', intialValues)
       .then((res) => {
         if (res) {
           setUserId(res.data.userId);
@@ -203,7 +203,7 @@ const Register = () => {
         if (url) {
           setIsLoading(true);
           axios
-            .put('https://baroque-fromage-48977.herokuapp.com/user/addImage/', {
+            .put('https://blood-donation-backend-production.up.railway.app/user/addImage/', {
               _id: userId,
               imageUrl: url
             })
@@ -226,7 +226,7 @@ const Register = () => {
     });
   };
   useEffect(() => {
-    axios('https://baroque-fromage-48977.herokuapp.com/division/all')
+    axios('https://blood-donation-backend-production.up.railway.app/division/all')
       .then((data) => {
         setDivision(data.data);
       })
@@ -236,7 +236,7 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    axios('https://baroque-fromage-48977.herokuapp.com/district/all')
+    axios('https://blood-donation-backend-production.up.railway.app/district/all')
       .then((data) => {
         setDistrict(data.data);
       })
@@ -246,7 +246,7 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    axios('https://baroque-fromage-48977.herokuapp.com/upazila/all')
+    axios('https://blood-donation-backend-production.up.railway.app/upazila/all')
       .then((data) => {
         setUpzilla(data.data);
       })
@@ -256,7 +256,7 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    axios('https://baroque-fromage-48977.herokuapp.com/union/all')
+    axios('https://blood-donation-backend-production.up.railway.app/union/all')
       .then((data) => {
         setUnion(data.data);
       })
